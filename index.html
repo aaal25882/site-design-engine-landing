@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>موتور طراحی سایت — طراحی با یک جمله</title>
+<meta name="description" content="یک جمله بنویسید که سایت چه شکلی باشد؛ موتور با هوش مصنوعی رنگ‌ها، تم روشن و تیره، گوشه‌ها، فاصله‌ها و حرکت را می‌چیند — بی دست زدن به محتوا." />
+<meta property="og:title" content="موتور طراحی سایت — طراحی با یک جمله" />
+<meta property="og:description" content="یک جمله بنویسید که سایت چه شکلی باشد؛ موتور با هوش مصنوعی رنگ‌ها، تم روشن و تیره، گوشه‌ها، فاصله‌ها و حرکت را می‌چیند — بی دست زدن به محتوا." />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#f5f6fb; --surface:#ffffff; --text:#111427; --soft:#4b5070; --line:rgba(40,44,90,.14); --chip:rgba(79,70,229,.07); --accent:#4f46e5; --on-accent:#ffffff; --accent-line:rgba(79,70,229,.45); --glow:rgba(124,58,237,.16); --shadow:rgba(49,46,129,.32); --title:linear-gradient(180deg,#6d28d9,#3730a3); color-scheme: light; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#0b0d1a; --surface:#141833; --text:#eceefb; --soft:#a8adcf; --line:rgba(180,186,255,.14); --chip:rgba(165,180,252,.08); --accent:#a5b4fc; --on-accent:#14163a; --accent-line:rgba(165,180,252,.45); --glow:rgba(147,51,234,.22); --shadow:rgba(0,0,0,.55); --title:linear-gradient(180deg,#c4b5fd,#818cf8); color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --bg:#0b0d1a; --surface:#141833; --text:#eceefb; --soft:#a8adcf; --line:rgba(180,186,255,.14); --chip:rgba(165,180,252,.08); --accent:#a5b4fc; --on-accent:#14163a; --accent-line:rgba(165,180,252,.45); --glow:rgba(147,51,234,.22); --shadow:rgba(0,0,0,.55); --title:linear-gradient(180deg,#c4b5fd,#818cf8); color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Vazirmatn', Tahoma, sans-serif; background: var(--bg); color: var(--text); line-height: 1.9; -webkit-font-smoothing: antialiased; overflow-x: hidden; transition: background-color .3s, color .3s; }
+  a { color: inherit; }
+  .wrap { width: min(1080px, 100% - 32px); margin-inline: auto; }
+  header.hero { position: relative; padding: 72px 0 56px; text-align: center; }
+  .halo { position: absolute; inset: -20% -10% auto; height: 560px; background: radial-gradient(ellipse at 50% 30%, var(--glow), transparent 62%); pointer-events: none; z-index: -1; }
+  .logo { width: 132px; height: 132px; margin: 0 auto; animation: float 6s ease-in-out infinite, rise .8s ease-out both; filter: drop-shadow(0 18px 40px var(--shadow)); }
+  .logo svg, .logo img { width: 100%; height: 100%; display: block; }
+  h1 { margin: 22px 0 6px; font-size: clamp(32px, 6vw, 54px); line-height: 1.3; font-weight: 800; background: var(--title); -webkit-background-clip: text; background-clip: text; color: transparent; animation: rise .8s .1s ease-out both; }
+  .tagline { margin: 0 auto; max-width: 720px; font-size: clamp(16px, 2.4vw, 20px); color: var(--soft); animation: rise .8s .2s ease-out both; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--chip); font-size: 13px; color: var(--soft); animation: rise .8s .3s ease-out both; }
+  .badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px; animation: rise .8s .4s ease-out both; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 22px; border-radius: 14px; background: var(--accent); color: var(--on-accent); font: inherit; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; transition: transform .2s, box-shadow .2s; box-shadow: 0 10px 26px -10px var(--shadow); }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: scale(.97); }
+  .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); box-shadow: none; }
+  .btn:focus-visible, .mode:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  section { padding: 44px 0; }
+  h2 { font-size: clamp(22px, 3.4vw, 30px); margin: 0 0 22px; font-weight: 800; }
+  h2 small { display: block; font-size: 14px; font-weight: 500; color: var(--soft); margin-top: 4px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card { padding: 22px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); transition: transform .25s, border-color .25s, box-shadow .25s; }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent-line); box-shadow: 0 18px 40px -22px var(--shadow); }
+  .card h3 { margin: 12px 0 4px; font-size: 17px; }
+  .card p { margin: 0; color: var(--soft); font-size: 14.5px; }
+  .ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--chip); color: var(--accent); font-size: 22px; }
+  /* نمونه‌ها: هر درخواست و شکلی که از آن درمی‌آید */
+  .samples { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .sample { border-radius: 20px; border: 1px solid var(--line); background: var(--surface); overflow: hidden; }
+  .sample q { display: block; padding: 16px 18px 12px; font-size: 14.5px; color: var(--soft); quotes: '«' '»'; }
+  .mini { margin: 0 14px 14px; border-radius: var(--r); overflow: hidden; background: var(--m-bg); color: var(--m-text); border: 1px solid var(--m-line); }
+  .mini .top { padding: 18px 16px 16px; background: var(--m-hero); color: var(--m-hero-text); }
+  .mini .top b { display: block; font-size: 16px; }
+  .mini .top span { font-size: 12px; opacity: .85; }
+  .mini .body { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; }
+  .mini .box { height: 46px; border-radius: calc(var(--r) * .7); background: var(--m-surface); border: 1px solid var(--m-line); }
+  .mini .box:first-child { grid-column: span 2; height: 30px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; padding-inline: 8px; }
+  .pair .mini { margin-inline: 6px !important; }
+  ol.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .step { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
+  .step .n { flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font-weight: 800; }
+  .step h3 { margin: 0; font-size: 16.5px; }
+  .step p { margin: 2px 0 0; color: var(--soft); font-size: 14.5px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { padding: 6px 12px; border-radius: 999px; background: var(--chip); border: 1px solid var(--line); font-size: 13px; color: var(--soft); }
+  .note { margin-top: 18px; padding: 18px 20px; border-radius: 18px; border: 1px dashed var(--accent-line); background: var(--chip); color: var(--soft); font-size: 14.5px; }
+  footer { padding: 36px 0 48px; text-align: center; color: var(--soft); font-size: 13px; border-top: 1px solid var(--line); margin-top: 24px; }
+  .mode { position: fixed; inset-block-end: 18px; inset-inline-end: 18px; z-index: 10; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--text); cursor: pointer; box-shadow: 0 10px 30px -12px var(--shadow); }
+  .mode svg { width: 20px; height: 20px; }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease-out, transform .7s cubic-bezier(.22,1,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 420px) { header.hero { padding: 56px 0 40px; } .card, .step { padding: 18px; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="halo"></div>
+    <div class="wrap">
+      <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="موتور طراحی سایت">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#9333ea"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="win"><rect x="92" y="136" width="328" height="252" rx="30"/></clipPath>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="112" fill="url(#sheen)"/>
+  <rect x="92" y="150" width="328" height="252" rx="30" fill="#1e1b4b" fill-opacity="0.35"/>
+  <g clip-path="url(#win)">
+    <rect x="92" y="136" width="328" height="252" fill="#f8fafc"/>
+    <path d="M420 136 V388 H170 Z" fill="#0f172a"/>
+    <rect x="92" y="136" width="328" height="44" fill="#e0e7ff"/>
+    <circle cx="122" cy="158" r="7" fill="#f87171"/>
+    <circle cx="146" cy="158" r="7" fill="#fbbf24"/>
+    <circle cx="170" cy="158" r="7" fill="#34d399"/>
+    <rect x="120" y="210" width="156" height="18" rx="9" fill="#4f46e5"/>
+    <rect x="120" y="244" width="112" height="14" rx="7" fill="#cbd5e1"/>
+    <rect x="296" y="304" width="96" height="18" rx="9" fill="#a5b4fc"/>
+    <rect x="320" y="338" width="72" height="14" rx="7" fill="#475569"/>
+  </g>
+  <path d="M396 70 L409 110 L449 123 L409 136 L396 176 L383 136 L343 123 L383 110 Z" fill="#fde68a"/>
+</svg></div>
+      <h1>موتور طراحی سایت</h1>
+      <p class="tagline">یک جمله بنویسید که سایت چه شکلی باشد؛ موتور با هوش مصنوعی رنگ‌ها، تم روشن و تیره، گوشه‌ها، فاصله‌ها و حرکت را می‌چیند — بی دست زدن به محتوا.</p>
+      <div class="badge">TypeScript · بی وابستگی · برای هر سایتی</div>
+      <div class="ctas">
+          <a class="btn" href="#samples">نمونه‌ها</a>
+          <a class="btn ghost" href="https://aora.ir" rel="noopener">سایت آئورا</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>چه می‌کند<small>«هوش مصنوعی پیشنهاد می‌دهد، موتور می‌سنجد»</small></h2>
+      <div class="grid">
+        <article class="card reveal"><div class="ic">✍️</div><h3>درخواست به زبان ساده</h3><p>«مینیمال، سیاه و سفید، گوشه‌های تیز» کافی است؛ لازم نیست کسی CSS بلد باشد.</p></article>
+        <article class="card reveal"><div class="ic">🌗</div><h3>روشن و تیره با یک جمله</h3><p>تم تیره‌ی واقعی، پیش‌فرض روشن، تیره یا هم‌رنگ دستگاه، و دکمه‌ی تعویض برای بازدیدکننده.</p></article>
+        <article class="card reveal"><div class="ic">👁️</div><h3>همیشه خوانا</h3><p>رنگ نوشته‌ها خودکار به کنتراست استاندارد WCAG می‌رسد، حتی اگر پیشنهاد مدل کم‌رنگ باشد.</p></article>
+        <article class="card reveal"><div class="ic">🛡️</div><h3>فقط ظاهر، نه کد</h3><p>مدل HTML یا JavaScript نمی‌نویسد؛ فقط مقدارها را انتخاب می‌کند. CSS اضافه پاک‌سازی و به خود صفحه محدود می‌شود.</p></article>
+        <article class="card reveal"><div class="ic">🧩</div><h3>برای هر سایتی</h3><p>هر صفحه با یک «میزبان» وصل می‌شود: می‌گوید کدام متغیر رنگ چیست و کدام بخش سربرگ است.</p></article>
+        <article class="card reveal"><div class="ic">↩️</div><h3>ذخیره و برگشت</h3><p>مشخصات طراحی ذخیره می‌شود و CSS هر بار بی پرسیدن دوباره از مدل ساخته می‌شود؛ برگشت یک‌قدمی هم دارد.</p></article>
+      </div>
+    </section>
+
+    <section id="samples">
+      <h2>نمونه‌ها<small>درخواست، و شکلی که از آن درمی‌آید</small></h2>
+      <div class="samples">
+        <figure class="sample reveal" style="margin:0">
+          <q>سایت دو تم لایت و دارک داشته باشد؛ سرمه‌ای و طلایی</q>
+          <div class="pair">
+            <div class="mini" style="--r:14px;--m-bg:#f7f5ef;--m-text:#14213d;--m-line:#e7e1d2;--m-surface:#ffffff;--m-hero:linear-gradient(135deg,#14213d,#c9a227);--m-hero-text:#ffffff;margin-inline-end:6px"><div class="top"><b>روشن</b><span>طراح محصول</span></div><div class="body"><div class="box"></div><div class="box"></div><div class="box"></div></div></div>
+            <div class="mini" style="--r:14px;--m-bg:#0b1324;--m-text:#eef1f7;--m-line:#22314f;--m-surface:#13203a;--m-hero:linear-gradient(135deg,#e0b84a,#7c93c8);--m-hero-text:#0b1324;margin-inline-start:6px"><div class="top"><b>تیره</b><span>طراح محصول</span></div><div class="body"><div class="box"></div><div class="box"></div><div class="box"></div></div></div>
+          </div>
+        </figure>
+        <figure class="sample reveal" style="margin:0">
+          <q>مینیمال، سیاه و سفید، گوشه‌های تیز</q>
+          <div class="mini" style="--r:0px;--m-bg:#ffffff;--m-text:#111111;--m-line:#d4d4d4;--m-surface:#ffffff;--m-hero:#ffffff;--m-hero-text:#111111"><div class="top" style="border-bottom:2px solid #111"><b>سارا محمدی</b><span>طراح محصول</span></div><div class="body"><div class="box"></div><div class="box"></div><div class="box"></div></div></div>
+        </figure>
+        <figure class="sample reveal" style="margin:0">
+          <q>گرم و صمیمی، کارت‌های گرد و نرم</q>
+          <div class="mini" style="--r:22px;--m-bg:#fff7ed;--m-text:#431407;--m-line:#fed7aa;--m-surface:#ffffff;--m-hero:linear-gradient(135deg,#ea580c,#f59e0b);--m-hero-text:#ffffff"><div class="top"><b>سارا محمدی</b><span>طراح محصول</span></div><div class="body"><div class="box"></div><div class="box"></div><div class="box"></div></div></div>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>چطور کار می‌کند<small>از یک جمله تا صفحه</small></h2>
+      <ol class="steps">
+        <li class="step reveal"><span class="n">۱</span><div><h3>سایت خودش را معرفی می‌کند</h3><p>چه صفحه‌ای است، کدام متغیر رنگ زمینه است و کدام کلاس بخش‌ها، و از میان چه قالب‌ها و فونت‌هایی می‌شود انتخاب کرد.</p></div></li>
+        <li class="step reveal"><span class="n">۲</span><div><h3>صاحب سایت می‌نویسد چه می‌خواهد</h3><p>درخواست فقط «توصیف ظاهر» است؛ قاعده‌ها و قالب خروجی را عوض نمی‌کند.</p></div></li>
+        <li class="step reveal"><span class="n">۳</span><div><h3>مدل مشخصات طراحی برمی‌گرداند</h3><p>موتور هر مقدار را جدا می‌سنجد، نادرست‌ها را با طراحی فعلی جایگزین می‌کند و کنتراست را درست می‌کند.</p></div></li>
+        <li class="step reveal"><span class="n">۴</span><div><h3>CSS روی صفحه می‌نشیند</h3><p>زیر یک دامنه‌ی محدود، با متغیرهای خود سایت؛ اگر نپسندید، یک قدم برمی‌گردید.</p></div></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>ساخته‌شده با</h2>
+      <div class="chips reveal"><span class="chip">TypeScript</span><span class="chip">Node test runner</span><span class="chip">WCAG 2.1</span><span class="chip">CSS Custom Properties</span><span class="chip">بی وابستگی زمان اجرا</span></div>
+      <p class="note reveal">مدل زبانی را خود سایت میزبان صدا می‌زند؛ موتور به هیچ سرویس یا کلیدی وابسته نیست. نخستین کاربرش سایت رزومه‌ی رزومه‌استودیوی آئوراست. کد این موتور خصوصی است؛ این صفحه فقط برای معرفی آن است.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">موتور طراحی سایت · ۱۴۰۵ · <a href="https://github.com/aaal25882">github.com/aaal25882</a></div>
+  </footer>
+
+  <button class="mode" type="button" id="mode" aria-label="حالت تیره"></button>
+
+<script>
+  // روشن و تیره: انتخاب بازدیدکننده (اگر ذخیره شد) وگرنه حالت دستگاه
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('mode');
+    var moon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 14.5A9 9 0 0 1 9.5 3a7.5 7.5 0 1 0 11.5 11.5Z"/></svg>';
+    var sun = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>';
+    try { var saved = localStorage.getItem('sde-theme'); if (saved === 'dark' || saved === 'light') root.dataset.theme = saved; } catch (e) {}
+    function isDark() { return root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; }
+    function paint() { var d = isDark(); btn.innerHTML = d ? sun : moon; btn.setAttribute('aria-label', d ? 'حالت روشن' : 'حالت تیره'); btn.title = btn.getAttribute('aria-label'); }
+    btn.addEventListener('click', function () { root.dataset.theme = isDark() ? 'light' : 'dark'; try { localStorage.setItem('sde-theme', root.dataset.theme); } catch (e) {} paint(); });
+    paint();
+  })();
+  // کارت‌ها هنگام پیمایش نرم ظاهر می‌شوند
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (e) { e.classList.add('in'); }); return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en, i) {
+        if (!en.isIntersecting) return;
+        en.target.style.transitionDelay = (i % 4) * 70 + 'ms';
+        en.target.classList.add('in'); io.unobserve(en.target);
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+</body>
+</html>
